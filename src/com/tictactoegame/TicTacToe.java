@@ -45,5 +45,6 @@ public class TicTacToe {
         TicTacToe tacToe = new TicTacToe();
         tacToe.displayBoard();
         tacToe.placeMark();
+        tacToe.displayBoard();
     }
 }
