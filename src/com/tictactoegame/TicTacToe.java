@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class TicTacToe {
 
-    char[][] board;
+   static char[][] board;
 
     public TicTacToe() {
         this.board = new char[3][3];
@@ -31,21 +31,12 @@ public class TicTacToe {
         }
     }
 
-    void placeMark() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter position where you want to place a mark:!!");
-        int row = scanner.nextInt();
-        int column = scanner.nextInt();
-        System.out.println("Choose a letter X Or O to place a mark");
-        char mark = scanner.next().charAt(0);
-
+    void placeMark(int row, int column, char mark) {
         if (row >= 0 && row <= 3 && column >= 0 && column <= 3) {
-            if (board[row][column] == ' ') {
+            if (board[row][column] == ' ')
                 board[row][column] = mark;
-            } else {
-                System.out.println("Already marked");
             }
-        } else {
+         else {
             System.out.println("Invalid position input!!");
         }
     }
@@ -54,9 +45,16 @@ public class TicTacToe {
         System.out.println("Welcome to TicTacToe Game:!!");
         TicTacToe tacToe = new TicTacToe();
         tacToe.displayBoard();
-        tacToe.placeMark();
+        HumanPlayer humanPlayer1 = new HumanPlayer("kundan",'X');
+        HumanPlayer humanPlayer2 = new HumanPlayer("Ritik",'O');
+
+        HumanPlayer cp;
+        cp = humanPlayer1;
+
+        System.out.println(cp.name + " Turn:");
+        cp.makeMove();
         tacToe.displayBoard();
-        tacToe.placeMark();
+        cp.makeMove();
         tacToe.displayBoard();
     }
 }
