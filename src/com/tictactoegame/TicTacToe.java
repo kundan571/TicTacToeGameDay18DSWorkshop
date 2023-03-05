@@ -31,6 +31,10 @@ public class TicTacToe {
         }
     }
 
+    int toss(){
+        return  (int)(Math.random() * 2);
+    }
+
     void placeMark(int row, int column, char mark) {
         if (row >= 0 && row <= 3 && column >= 0 && column <= 3) {
             if (board[row][column] == ' ')
@@ -46,15 +50,18 @@ public class TicTacToe {
         TicTacToe tacToe = new TicTacToe();
         tacToe.displayBoard();
         HumanPlayer humanPlayer1 = new HumanPlayer("kundan",'X');
-        HumanPlayer humanPlayer2 = new HumanPlayer("Ritik",'O');
+        Computer computer = new Computer("AIPlayer",'O');
+        tacToe.toss();
+        if (tacToe.toss() == 1){
+            System.out.println("you won the toss: your turn");
+            humanPlayer1.makeMove();
+            tacToe.displayBoard();
+        }else {
+            System.out.println("computer move");
+            computer.makeMove();
+            tacToe.displayBoard();
+        }
 
-        HumanPlayer cp;
-        cp = humanPlayer1;
 
-        System.out.println(cp.name + " Turn:");
-        cp.makeMove();
-        tacToe.displayBoard();
-        cp.makeMove();
-        tacToe.displayBoard();
     }
 }
