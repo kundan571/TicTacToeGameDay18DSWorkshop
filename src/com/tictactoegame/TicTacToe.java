@@ -30,19 +30,31 @@ public class TicTacToe {
             System.out.println("-------------");
         }
     }
-    void placeMark(){
+
+    void placeMark() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter row and columnth position where you want to place a mark:!!");
+        System.out.println("Enter position where you want to place a mark:!!");
         int row = scanner.nextInt();
         int column = scanner.nextInt();
         System.out.println("Choose a letter X Or O to place a mark");
         char mark = scanner.next().charAt(0);
-        board[row][column] = mark;
+
+        if (row >= 0 && row <= 3 && column >= 0 && column <= 3) {
+            if (board[row][column] == ' ') {
+                board[row][column] = mark;
+            } else {
+                System.out.println("Already marked");
+            }
+        } else {
+            System.out.println("Invalid position input!!");
+        }
     }
 
     public static void main(String[] args) {
         System.out.println("Welcome to TicTacToe Game:!!");
         TicTacToe tacToe = new TicTacToe();
+        tacToe.displayBoard();
+        tacToe.placeMark();
         tacToe.displayBoard();
         tacToe.placeMark();
         tacToe.displayBoard();
