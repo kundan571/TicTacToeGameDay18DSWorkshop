@@ -3,9 +3,8 @@ package com.tictactoegame;
 import java.util.Random;
 import java.util.Scanner;
 
-public class Computer {
-    String name;
-    char mark;
+public class Computer extends Player {
+
 
     public Computer(String name, char mark) {
         this.name = name;
@@ -21,16 +20,9 @@ public class Computer {
             row = random.nextInt(3);
             column = random.nextInt(3);
         } while (!isValidMove(row, column));
-        TicTacToe ticTacToe = new TicTacToe();
-        ticTacToe.placeMark( row, column, mark);
+   //     TicTacToe ticTacToe = new TicTacToe();
+            TicTacToe.placeMark( row, column, mark);
     }
 
-    boolean isValidMove(int row, int column) {
-        if (row >= 0 && row <= 3 && column >= 0 && column <= 3) {
-            if (TicTacToe.board[row][column] == ' ') {
-                return true;
-            }
-        }
-        return false;
-    }
+
 }

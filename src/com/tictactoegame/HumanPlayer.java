@@ -2,9 +2,8 @@ package com.tictactoegame;
 
 import java.util.Scanner;
 
-public class HumanPlayer {
-    String name;
-    char mark;
+public class HumanPlayer extends Player {
+
 
     public HumanPlayer(String name, char mark) {
         this.name = name;
@@ -21,16 +20,9 @@ public class HumanPlayer {
             column = scanner.nextInt();
             break;
         } while (!isValidMove(row, column));
-        TicTacToe ticTacToe = new TicTacToe();
-        ticTacToe.placeMark( row, column, mark);
+ //       TicTacToe ticTacToe = new TicTacToe();
+        TicTacToe.placeMark( row, column, mark);
     }
 
-    boolean isValidMove(int row, int column) {
-        if (row >= 0 && row <= 3 && column >= 0 && column <= 3) {
-            if (TicTacToe.board[row][column] == ' ') {
-                return true;
-            }
-        }
-        return false;
-    }
+
 }
